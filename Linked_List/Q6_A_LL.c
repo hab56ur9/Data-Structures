@@ -89,6 +89,27 @@ int main()
 int moveMaxToFront(ListNode **ptrHead)
 {
     /* add your code here */
+	//Done
+	if(*ptrHead == NULL || (*ptrHead)->next ==NULL) // 리스트가 없거나 한개인 경우 리턴.
+		return -1 ;
+
+	ListNode* cur, *target;
+	target = cur = (ListNode*)malloc(sizeof(ListNode));
+	cur->next = *ptrHead;
+	cur->item = 0; //최솟값
+	*ptrHead = cur ;
+	while(cur->next != NULL)
+	{
+		if(cur->next->item > target->next->item)
+			target = cur;
+		cur = cur->next;
+	}
+	cur = *ptrHead;
+	*ptrHead = target->next;
+	target->next = target->next->next;
+	(*ptrHead)->next = cur->next;
+	free(cur);
+	return 0; 
 }
 
 //////////////////////////////////////////////////////////////////////////////////

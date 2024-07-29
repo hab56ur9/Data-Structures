@@ -103,7 +103,20 @@ int main()
 
 void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 {
-    /* add your code here */
+	ListNode** cur , *temp;
+
+	cur = &(ll1->head->next);
+	
+	while(ll2->head && *cur)
+	{
+		temp = *cur;	 // 1
+		*cur  = ll2->head; // 2 
+		ll2->head = ll2->head->next; //3
+		(*cur)->next = temp; //4 
+		cur = &(temp->next); // 5
+		ll1->size++;
+		ll2->size--;
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
