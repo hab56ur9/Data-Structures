@@ -104,6 +104,24 @@ int main()
 int isStackPairwiseConsecutive(Stack *s)
 {
   /* add your code here */
+  ListNode* cur;
+  int data1,data2;
+  printf("The stack is : ");
+  printList(&(s->ll));
+  cur = (s->ll).head;
+  if(!cur) // 0개 이거나 1개라면 
+	return 0;
+  if(!(cur->next))
+	return 0;
+  while(!cur->next)
+  {
+	data1 = cur->item;
+	data2 = cur->next->item;
+	if( data1-1 != data2)
+		return 0;
+	cur = cur->next->next;
+  }
+  return 1;
 }
 
 //////////////////////////////////////////////////////////////////////////////////

@@ -110,6 +110,19 @@ int main()
 void recursiveReverse(Queue *q)
 {
 /* add your code here */
+	// Done
+	ListNode** ptrHead,*pre,*cur;
+	ptrHead = &(q->ll.head);
+	if(!*ptrHead)
+		return;
+	pre = *ptrHead;
+	cur = (*ptrHead)->next;
+	if(!cur)
+		return;
+	*ptrHead = pre->next;
+	recursiveReverse(q);
+	cur->next = pre;
+	pre->next = NULL;
 }
 
 //////////////////////////////////////////////////////////////////

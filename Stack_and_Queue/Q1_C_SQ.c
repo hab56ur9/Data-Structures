@@ -117,11 +117,39 @@ int main()
 void createQueueFromLinkedList(LinkedList *ll, Queue *q)
 {
 	/* add your code here */
+	//DOne
+	ListNode **tail,* cur, *temp;
+	tail = &((q->ll).head);
+	cur = ll->head;
+	while(cur)
+	{
+		temp = (ListNode*)malloc(sizeof(ListNode));
+		temp->item = cur->item; // 값을 복사
+		temp->next = NULL; // 다음 주소를 NULL로 설정
+		cur = cur->next; // 다음 인덱스 LL 이동
+		*tail = temp; // tail뒤에 붙이기
+		tail = &((*tail)->next); // tail을 뒤로 이동 
+		(q->ll).size++; // 사이즈 증가
+	}	
+
 }
 
 void removeOddValues(Queue *q)
 {
 	/* add your code here */
+	// Done
+	ListNode** pre,*temp;
+	pre = &((q->ll).head);
+	while(*pre)
+		if((*pre)->item %2 == 1)
+		{
+			temp = *pre;
+			*pre = temp->next;
+			(q->ll).size--;
+			free(temp);
+		}
+		else
+			pre =&((*pre)->next);
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -225,9 +253,7 @@ int insertNode(LinkedList *ll, int index, int value){
 		cur = ll->head;
 		ll->head = malloc(sizeof(ListNode));
 		if (ll->head == NULL)
-		{
 			exit(0);
-		}
 		ll->head->item = value;
 		ll->head->next = cur;
 		ll->size++;

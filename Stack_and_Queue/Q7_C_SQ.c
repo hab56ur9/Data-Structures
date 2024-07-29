@@ -105,6 +105,38 @@ int main()
 int balanced(char *expression)
 {
 /* add your code here */
+	//Done
+	char* front,*end;
+	int cnt = 1 ;
+	front = end = expression;
+	while(*(end+1)){
+		end++;
+		cnt++;
+	}
+	if(cnt%2==1)
+		return 1;
+	cnt = cnt/2;
+	
+	while(cnt--){
+		switch (*front)
+		{
+		case '[':
+			if(*end !=']')
+				return 1 ;
+			break;
+		case '{':
+			if(*end !='}')
+				return 1;
+			break;
+		case '(':
+			if(*end!=')')
+				return 1;
+			break;
+		}
+		front++;
+		end--;
+	}
+	return 0;
 }
 
 ////////////////////////////////////////////////////////////

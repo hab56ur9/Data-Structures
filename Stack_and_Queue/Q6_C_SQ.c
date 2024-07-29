@@ -112,6 +112,14 @@ int main()
 void removeUntil(Stack *s, int value)
 {
 /* add your code here */
+	//Done
+	ListNode** top;
+	top = &(s->ll.head);
+	while(*top)
+		if(value == peek(s))
+			break;
+		else 
+			pop(s);
 }
 
 //////////////////////////////////////////////////////////////////////////////////
