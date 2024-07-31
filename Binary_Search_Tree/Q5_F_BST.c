@@ -92,6 +92,29 @@ int main()
 void postOrderIterativeS2(BSTNode *root)
 {
 	 /* add your code here */
+	 //Done
+	 Stack stack,postOrder;
+	 stack.top = NULL;
+	 postOrder.top = NULL;
+	 BSTNode* temp;
+	 stack.top = NULL;
+	 push(&stack,root);
+
+	 while(!isEmpty(&stack))
+	 {
+		temp = pop(&stack);
+		if(temp->left)
+			push(&stack,temp->left);
+		if(temp->right)
+			push(&stack,temp->right);
+		push(&postOrder,temp);
+	 }
+	 while(!isEmpty(&postOrder))
+	{
+		temp = pop(&postOrder);
+		printf("%d ",temp->item);
+		free(temp);
+	}
 }
 
 /* Given a binary search tree and a key, this function
@@ -99,6 +122,8 @@ void postOrderIterativeS2(BSTNode *root)
 BSTNode* removeNodeFromTree(BSTNode *root, int value)
 {
 	/* add your code here */
+	
+
 }
 ///////////////////////////////////////////////////////////////////////////////
 

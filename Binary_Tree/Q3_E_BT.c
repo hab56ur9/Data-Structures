@@ -99,15 +99,25 @@ int main()
 //////////////////////////////////////////////////////////////////////////////////
 
 int countOneChildNodes(BTNode *node)
-
 {
     /* add your code here */
+    //Done
+    int cnt = 0;
+    if (node == NULL)
+        return 0;
+    if(node->left == NULL && node->right == NULL)
+        return 0;
+    if(node->left == NULL || node->right == NULL)
+        cnt++;
+    return cnt + countOneChildNodes(node->left) + countOneChildNodes(node->right);
+    
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 
 BTNode *createBTNode(int item)
 {
+
     BTNode *newNode = malloc(sizeof(BTNode));
     newNode->item = item;
     newNode->left = NULL;
